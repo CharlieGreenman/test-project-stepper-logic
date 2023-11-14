@@ -1,0 +1,29 @@
+{
+  "name": "test-project-stepper-logic-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/test-project-stepper-logic-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/test-project-stepper-logic-e2e/cypress.json",
+        "devServerTarget": "test-project-stepper-logic:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "test-project-stepper-logic:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/test-project-stepper-logic-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["test-project-stepper-logic"]
+}
